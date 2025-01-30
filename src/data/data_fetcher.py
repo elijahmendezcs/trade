@@ -1,44 +1,35 @@
-import requests
 import os
-import time
-from datetime import datetime
-
+import yfinance as yf
 
 def fetch_historical_data(symbol, start_date, end_date, save_dir="data/historical"):
     """
-        Fetch historical stock data from Yahoo Finance and save it as a CSV file.
+    Fetch historical stock data using yfinance and save it as a CSV file.
+    :param symbol: Stock ticker symbol (e.g., 'AAPL').
+    :param start_date: Start date in 'YYYY-MM-DD' format.
+    :param end_date: End date in 'YYYY-MM-DD' format.
+    :param save_dir: Directory to save the CSV file.
+    """
+    print(f"Fetching data for {symbol} from {start_date} to {end_date}...")
 
-        :param symbol: Stock ticker symbol (e.g., 'AAPL').
-        :param start_date: Start date in 'YYYY-MM-DD' format.
-        :param end_date: End date in 'YYYY-MM-DD' format.
-        :param save_dir: Directory to save the CSV file.
-        """
+    # Ensure save directory exists
+    os.makedirs(save_dir, exist_ok=True)
 
-    start_timestamp = int(time.mktime(datetime.strptime(start_date, "%Y-%m-%d").timetuple()))
-    end_timestamp = int(time.mktime(datetime.strptime(end_date, "%Y-%m-%d").timetuple()))
+    # Fetch data
+    try:
+        data = yf.download(symbol, start=start_date, end=end_date)
+        if data.empty:
+            print(f"No data available for {symbol} from {start_date} to {end_date}")
+            return
 
-    url = f"https://query1.finance.yahoo.com/v7/finance/download/{symbol}"
-    params = {
-        "period1": start_timestamp,
-        "period2": end_timestamp,
-        "interval": "1d",
-        "events": "history",
-    }
-
-    response = requests.get(url, params=params)
-
-    if response.status_code == 200:
-        os.makedirs(save_dir, exist_ok=True)
-
-        file_path = os.path.join(save_dir, f"{symbol}.csv")
-        with open(file_path, "wb") as file:
-            file.write(response.content)
-
+        # Save to CSV without redundant "Date" header row
+        file_name = f"{symbol}_{start_date}_to_{end_date}.csv"
+        file_path = os.path.join(save_dir, file_name)
+        data.to_csv(file_path)  # No index_label to avoid redundant row
         print(f"Data for {symbol} saved to {file_path}")
-    else:
-        print(f"Failed to fetch data for {symbol}. Error: {response.status_code}, {response.text}")
+    except Exception as e:
+        print(f"Failed to fetch data for {symbol}. Exception type: {type(e).__name__}, Error: {e}")
 
 
-
+# Test the function
 if __name__ == "__main__":
     fetch_historical_data("AAPL", "2021-01-01", "2021-12-31")

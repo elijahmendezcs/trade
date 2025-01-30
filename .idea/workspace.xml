@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="54de4634-b96c-4393-8c76-06f214574dfb" name="Changes" comment="creating a mock project structure.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/historical" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/data_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/data_fetcher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +50,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
