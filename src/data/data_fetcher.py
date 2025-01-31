@@ -40,4 +40,4 @@ def fetch_historical_data(symbol, start_date, end_date, save_dir="data/historica
 
 # Test
 if __name__ == "__main__":
-    fetch_historical_data("AAPL", "2025-01-01", "2025-01-28")
+    fetch_historical_data("AAPL", "2000-01-01", "2025-01-28")

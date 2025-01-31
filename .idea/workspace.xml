@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="54de4634-b96c-4393-8c76-06f214574dfb" name="Changes" comment="creating a mock project structure.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/data_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/data_fetcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/data_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/data_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/strategies/example_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/strategies/example_strategy.py" afterDir="false" />
@@ -80,6 +81,7 @@
       <workItem from="1738270215101" duration="21000" />
       <workItem from="1738271748588" duration="1120000" />
       <workItem from="1738285927089" duration="2272000" />
+      <workItem from="1738291995621" duration="2235000" />
     </task>
     <task id="LOCAL-00001" summary="creating a mock project structure.">
       <option name="closed" value="true" />

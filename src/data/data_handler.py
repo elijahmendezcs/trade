@@ -1,31 +1,29 @@
 import pandas as pd
 
-def load_and_clean_data(filepath: str) -> pd.DataFrame:
-    """
-    Loads a CSV file (fetched by data_fetcher.py), cleans it, and returns a pandas DataFrame ready for analysis.
-    :param filepath: Path to the CSV file.
-    :return: A cleaned pandas DataFrame with a DatetimeIndex.
-    """
+def load_and_clean_data(filepath):
+    """Load and preprocess market data."""
+    df = pd.read_csv(filepath)
 
-    # Load the CSV file and parse the "Date" column as datetime
-    df = pd.read_csv(filepath, parse_dates=['Date'])
+    # Convert to datetime index
+    if 'Date' in df.columns:
+        df['Date'] = pd.to_datetime(df['Date'])
+        df.set_index('Date', inplace=True)
+    elif 'Datetime' in df.columns:
+        df['Datetime'] = pd.to_datetime(df['Datetime'])
+        df.set_index('Datetime', inplace=True)
 
-    # Set the "Date" column as the DataFrame index
-    df.set_index('Date', inplace=True)
-
-    # Adjust column names if they contain a suffix like "_AAPL"
+    # Rename columns to standard names
     rename_columns = {
         'Open_AAPL': 'Open',
         'High_AAPL': 'High',
         'Low_AAPL': 'Low',
-        'Close_AAPL': 'Close'
+        'Close_AAPL': 'Close',
+        'Volume_AAPL': 'Volume'
     }
     df.rename(columns=rename_columns, inplace=True)
 
-    # Drop rows with missing data in these columns
-    df.dropna(subset=['Open', 'High', 'Low', 'Close'], how='any', inplace=True)
+    # Clean missing values
+    df = df.dropna()
+    df = df[['Open', 'High', 'Low', 'Close', 'Volume']]  # Standardize columns
 
-    # Sort the DataFrame by its index (Date)
-    df.sort_index(inplace=True)
-
-    return df
+    return df.sort_index()
