@@ -7,7 +7,7 @@ from src.strategies.example_strategy import moving_average_crossover_strategy
 def main():
     try:
         # 1. Load data
-        filepath = "data/historical/AAPL_2000-01-01_to_2025-01-28.csv"
+        filepath = "data/historical/AAPL_2024-01-01_to_2025-01-28.csv"
         df = load_and_clean_data(filepath)
 
         # 2. Apply strategy

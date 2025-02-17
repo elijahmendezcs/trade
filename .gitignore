@@ -1,5 +1,27 @@
-.venv
-.idea
+#-----------------------------------------
+# Python-specific ignores
+#-----------------------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environments
+.venv/
+venv/
+
+# If you have a specific .env file containing secrets
 .env
-.idea/workspace.xml
-.idea/trade.iml
+
+#-----------------------------------------
+# Editor / IDE files
+#-----------------------------------------
+# IntelliJ / PyCharm project files
+.idea/
+
+#-----------------------------------------
+# OS-specific files
+#-----------------------------------------
+.DS_Store
+Thumbs.db
